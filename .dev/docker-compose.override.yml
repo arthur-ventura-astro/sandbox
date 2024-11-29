@@ -1,7 +1,16 @@
 services:
   scheduler:
+    # Debugging Configuration
     command: 
       - bash
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     healthcheck: {}
+
+    # Minikube Connection Configuration
+    networks:
+      - minikube
+
+networks:
+  minikube:
+    external: true

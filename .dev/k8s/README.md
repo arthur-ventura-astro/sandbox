@@ -69,7 +69,9 @@ Manage Cluster:
 # Set configuration file
 export KUBECONFIG=~/.kube/sandbox_config
 # Start Cluster
-minikube start
+minikube start --embed-certs
+# Save the configuration file to use it on airflow
+cat $KUBECONFIG > ../../include/.kube
 # Stop Cluster
 minikube stop
 ```
