@@ -1,5 +1,8 @@
+from airflow.configuration import conf
 from airflow.decorators import dag, task
 from datetime import datetime
+
+NAMESPACE = conf.get("kubernetes", "NAMESPACE")
 
 @dag(
     schedule="0 * * * *",
@@ -17,6 +20,7 @@ def kpo_astro_example():
 
     @task.kubernetes(
         image="python:3.8-slim-buster",
+        namespace=NAMESPACE,
         in_cluster=True,
         get_logs=True
     )
