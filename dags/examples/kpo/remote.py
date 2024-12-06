@@ -7,7 +7,7 @@ from datetime import datetime
     catchup=False,
     tags=["examples"],
 )
-def kpo_example():
+def kpo_remote_example():
     @task(
         retries=2
     )
@@ -17,11 +17,10 @@ def kpo_example():
 
     @task.kubernetes(
         image="python:3.8-slim-buster",
-        kubernetes_conn_id="cluster",
-        namespace="general"
+        kubernetes_conn_id="cluster"
     )
     def print_random(rand):
         print(rand)
 
     print_random(generate_random())
-kpo_example()
+kpo_remote_example()
