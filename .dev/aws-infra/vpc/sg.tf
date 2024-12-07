@@ -10,16 +10,6 @@ module "security_group" {
       rule = "all-all"
     }
   ]
-  ingress_with_cidr_blocks = [
-    {
-      from_port   = 0
-      to_port     = 0
-      protocol    = "-1"
-      description = "Allow all inbound traffic"
-      cidr_blocks = "0.0.0.0/0"
-    }
-  ]
-
   egress_with_self = [
     {
       rule = "all-all"
@@ -28,7 +18,8 @@ module "security_group" {
   egress_with_cidr_blocks = [
     {
       rule        = "https-443-tcp"
-      cidr_blocks = "0.0.0.0/0"
+      cidr_blocks      = "0.0.0.0/0"
+      ipv6_cidr_blocks = "::/0"
     }
   ]
 }

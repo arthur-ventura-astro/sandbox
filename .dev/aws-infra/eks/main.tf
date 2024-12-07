@@ -6,7 +6,7 @@ module "eks" {
   cluster_version = "1.31"
 
   # Optional
-  cluster_endpoint_public_access = true
+  cluster_endpoint_public_access = false
   # Optional: Adds the current caller identity as an administrator via cluster access entry
   enable_cluster_creator_admin_permissions = true
 
