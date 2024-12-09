@@ -38,7 +38,16 @@ resource "local_file" "instance_ip" {
   count = local.ssh_resources
 
   content  = module.ec2_bastion.public_ip
-  filename = ".secrets/bastion-host.txt"
+  filename = ".secrets/bastion-host-ip.txt"
+
+  depends_on = [ module.ec2_bastion ]
+}
+
+resource "local_file" "instance_id" {
+  count = local.ssm_resources
+
+  content  = module.ec2_bastion.id
+  filename = ".secrets/bastion-host-id.txt"
 
   depends_on = [ module.ec2_bastion ]
 }

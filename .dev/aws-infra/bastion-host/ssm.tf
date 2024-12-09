@@ -1,8 +1,11 @@
+# Installation docs for SSM Agent: https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html
+
 locals {
   # Define either to connect through SSM or SSH
-  use_ssm = false
+  use_ssm = true
 
   # Configure constraints for using SSM/SSH
+  ssm_resources = local.use_ssm == true ? 1 : 0
   ssh_resources = local.use_ssm == true ? 0 : 1
   public_ip = !local.use_ssm
   subnet_id = local.use_ssm == true ? local.private_subnets[0] : local.public_subnets[0]

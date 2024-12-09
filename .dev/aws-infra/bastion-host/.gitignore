@@ -1,2 +1,2 @@
 .secrets/*.pem
-.secrets/bastion-host.txt
+.secrets/*bastion-host*
