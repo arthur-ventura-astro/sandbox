@@ -1,6 +1,6 @@
 terraform {
   backend "local" {
-    path = "./states/k8s.tfstate"
+    path = "./.states/k8s.tfstate"
   }
 
   required_providers {
