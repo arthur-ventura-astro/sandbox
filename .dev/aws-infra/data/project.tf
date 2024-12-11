@@ -3,6 +3,7 @@ locals {
   project_region = "us-east-2"
   project_ssm = "/${local.project_name}"
   project_bucket = "${local.project_name}-terraform"
+  project_domain = "${local.project_name}"
   
   project_tags = {
     Project = "Astro"
@@ -23,6 +24,10 @@ output "project_ssm" {
 
 output "project_bucket" {
   value = local.project_bucket
+}
+
+output "project_domain" {
+  value = local.project_domain
 }
 
 output "project_tags" {
