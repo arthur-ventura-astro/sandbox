@@ -19,7 +19,7 @@ def kpo_astro_example():
         return str(randint(0, 1000))
 
     @task.kubernetes(
-        image="python:3.8-slim-buster",
+        image="{{ var.value.custom_airflow }}",
         namespace=NAMESPACE,
         in_cluster=True,
         get_logs=True

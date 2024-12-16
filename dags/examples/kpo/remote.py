@@ -16,7 +16,7 @@ def kpo_remote_example():
         return str(randint(0, 1000))
 
     @task.kubernetes(
-        image="python:3.8-slim-buster",
+        image="{{ var.value.custom_airflow }}",
         kubernetes_conn_id="cluster"
     )
     def print_random(rand):
