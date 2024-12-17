@@ -9,14 +9,6 @@ variable "user_arn" {
   type = string
   sensitive = true
 }
-variable "dev_deployment_arn" {
-  type = string
-  sensitive = true
-}
-variable "prod_deployment_arn" {
-  type = string
-  sensitive = true
-}
 
 resource "aws_iam_role" "deployment_access" {
   name = "${module.data.eks_name}-deployment-access"
@@ -28,9 +20,7 @@ resource "aws_iam_role" "deployment_access" {
         Effect = "Allow",
         Principal = {
           AWS = [
-            "${var.user_arn}",
-            "${var.dev_deployment_arn}",
-            "${var.prod_deployment_arn}"
+            "${var.user_arn}"
           ]
           Service = [
             "ec2.amazonaws.com",

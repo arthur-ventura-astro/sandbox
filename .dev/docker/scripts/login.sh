@@ -1,0 +1,1 @@
+exec aws ecr get-login-password --region us-east-2 --profile training | docker login --username AWS --password-stdin $PROJECT_ID.dkr.ecr.us-east-2.amazonaws.com
