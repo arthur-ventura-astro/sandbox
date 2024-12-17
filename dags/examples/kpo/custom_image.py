@@ -5,12 +5,12 @@ from datetime import datetime
 NAMESPACE = conf.get("kubernetes", "NAMESPACE")
 
 @dag(
-    schedule="0 * * * *",
+    schedule="@once",
     start_date=datetime(2024, 11, 29),
     catchup=False,
     tags=["examples"],
 )
-def kpo_astro_example():
+def kpo_custom_image_example():
     @task(
         retries=2
     )
@@ -19,7 +19,7 @@ def kpo_astro_example():
         return str(randint(0, 1000))
 
     @task.kubernetes(
-        image="python",
+        image="{{ var.value.custom_image }}",
         namespace=NAMESPACE,
         in_cluster=True,
         get_logs=True
@@ -28,4 +28,4 @@ def kpo_astro_example():
         print(rand)
 
     print_random(generate_random())
-kpo_astro_example()
+kpo_custom_image_example()

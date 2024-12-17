@@ -15,9 +15,9 @@ with DAG(
     tags=["examples"],
 ):
     default_kpo = KubernetesPodOperator(
-        image="{{ var.value.custom_airflow }}",
-        name="custom-airflow",
-        task_id="custom_airflow",
+        image="hello-world",
+        name="hello-world",
+        task_id="hello_world",
         in_cluster=True,
         is_delete_operator_pod=True,
         get_logs=True,
