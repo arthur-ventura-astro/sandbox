@@ -45,5 +45,5 @@ def kpo_custom_image_example():
         print("xcom_image")
 
     print_random(generate_random())
-    get_image(xcom_image())
+    get_image() >> xcom_image()
 kpo_custom_image_example()
