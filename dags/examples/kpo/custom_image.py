@@ -28,5 +28,22 @@ def kpo_custom_image_example():
     def print_random(rand):
         print(rand)
 
+    @task
+    def get_image():
+        import os
+        image = os.getenv("CUSTOM_IMAGE")
+        return image
+
+    @task.kubernetes(
+        image="{{ task_instance.xcom_pull(task_ids='get_image') }}",
+        namespace=NAMESPACE,
+        in_cluster=True,
+        get_logs=True,
+        image_pull_policy="Always"
+    )
+    def xcom_image():
+        print("xcom_image")
+
     print_random(generate_random())
+    get_image(xcom_image())
 kpo_custom_image_example()
