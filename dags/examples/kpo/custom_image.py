@@ -22,7 +22,8 @@ def kpo_custom_image_example():
         image="{{ var.value.custom_image }}",
         namespace=NAMESPACE,
         in_cluster=True,
-        get_logs=True
+        get_logs=True,
+        image_pull_policy="Always"
     )
     def print_random(rand):
         print(rand)
