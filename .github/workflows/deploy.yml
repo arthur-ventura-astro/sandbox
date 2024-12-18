@@ -31,3 +31,13 @@ jobs:
         ASTRO_API_TOKEN: ${{ secrets.PROD_ASTRO_API_TOKEN }}
       with:
         deployment-id: ${{ vars.PROD_ASTRO_DEPLOYMENT_ID }}
+  experimental-push:
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to Astro
+      env:
+        ASTRO_API_TOKEN: ${{ secrets.EXP_ASTRO_API_TOKEN }}
+      uses: astronomer/deploy-action@v0.8.0
+      with:
+        deployment-id: ${{ vars.EXP_ASTRO_DEPLOYMENT_ID }}
