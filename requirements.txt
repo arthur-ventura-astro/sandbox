@@ -4,3 +4,6 @@ apache-airflow-providers-http
 apache-airflow-providers-amazon
 apache-airflow-providers-cncf-kubernetes
 astronomer-providers[all]
+# Libraries
+pandas
+sqlalchemy

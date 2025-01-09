@@ -1,11 +1,7 @@
 terraform {
   required_version = ">=1.4"
-  backend "s3" {
-    profile = "training"
-    bucket  = "astro-sandbox-terraform"
-    key     = "states/astro/deployments/terraform.tfstate"
-    encrypt = true
-    region  = "us-east-2"
+  backend "local" {
+    path = "../.states/terraform.tfstate"
   }
 
   required_providers {
