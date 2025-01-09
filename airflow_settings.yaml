@@ -13,7 +13,7 @@ airflow:
 
     - conn_id: traffic_factors_bucket
       conn_type: http
-      conn_host: https://github.com/arthur-ventura-astro/sandbox/tree/dev/data/traffic_accidents.csv?raw=true
+      conn_host: https://github.com/arthur-ventura-astro/sandbox/blob/dev/data/traffic_accidents.csv?raw=true
 
     - conn_id: cluster
       conn_type: kubernetes
