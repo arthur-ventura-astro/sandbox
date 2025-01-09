@@ -15,13 +15,11 @@ module "postgres" {
   max_allocated_storage = 100
 
   db_name  = "sandbox"
-  username = "postgres"
+  username = var.rds_username
+  password = var.rds_password
+
   port     = module.data.rds_port
   publicly_accessible = true
-
-  manage_master_user_password_rotation              = true
-  master_user_password_rotate_immediately           = false
-  master_user_password_rotation_schedule_expression = "rate(15 days)"
 
   multi_az               = false
   create_db_subnet_group = true
@@ -33,6 +31,7 @@ module "postgres" {
   backup_window                   = "03:00-06:00"
   enabled_cloudwatch_logs_exports = ["postgresql", "upgrade"]
   create_cloudwatch_log_group     = true
+  manage_master_user_password     = false
 
   backup_retention_period = 1
   skip_final_snapshot     = true

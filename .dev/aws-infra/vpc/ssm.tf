@@ -10,12 +10,6 @@ resource "aws_ssm_parameter" "vpc_private_subnets" {
   value = join(",", module.vpc.private_subnets)
 }
 
-resource "aws_ssm_parameter" "vpc_intra_subnets" {
-  name = "${module.data.project_ssm}/vpc/intra-subnets"
-  type = "String"
-  value = join(",", module.vpc.intra_subnets)
-}
-
 resource "aws_ssm_parameter" "vpc_public_subnets" {
   name = "${module.data.project_ssm}/vpc/public-subnets"
   type = "String"
