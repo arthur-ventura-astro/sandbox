@@ -7,4 +7,5 @@ astronomer-providers[all]
 astronomer-starship
 # Libraries
 pandas
+polars
 sqlalchemy

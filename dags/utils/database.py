@@ -1,4 +1,6 @@
-import pandas as pd
+import polars as pl
+from polars.exceptions import NoDataError
+
 
 def _retrieve_conn_uri(connection):
     from airflow.hooks.base_hook import BaseHook
@@ -14,7 +16,12 @@ def _build_connection(connection):
 
 
 def load_data(data, table, conn_id):
-    df = pd.DataFrame(data)
+    try:
+        df = pl.DataFrame(data)
+    except NoDataError:
+        print("No data. Skipping load.")
+        return True
+
     conn = _build_connection(conn_id)
     df.write_database(
         table_name=table,
@@ -22,4 +29,3 @@ def load_data(data, table, conn_id):
         if_table_exists='append'
     )
     print(f"Successful Data Insert: table ({table}), rows ({len(df)}).")
-
