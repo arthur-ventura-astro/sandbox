@@ -6,6 +6,5 @@ apache-airflow-providers-cncf-kubernetes
 astronomer-providers[all]
 astronomer-starship
 # Libraries
-pandas
 polars
 sqlalchemy

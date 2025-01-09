@@ -15,18 +15,21 @@ def traffic_factors_el():
     def extract_traffic_data(dataset_url, ds):
         import pandas as pd
 
-        df = pd.read_csv(dataset_url, index_col=0)
+        df = pd.read_csv(dataset_url)
         df['ds'] = ds
+        df['id'] = [i for i in range(len(df))]
         print(df.head())
 
-        return df.to_dict()
+        return dict(
+            data=list(df.to_dict('records'))
+        )
 
     @task(
         retries=2
     )
     def load_traffic_data(data, conn):
         table_name = "raw_traffic.traffic_factors"
-        load_data(data, table_name, conn)
+        load_data(data.get('data'), table_name, conn)
 
     load_traffic_data(
         data=extract_traffic_data(
