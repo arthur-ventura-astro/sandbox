@@ -32,8 +32,7 @@ jobs:
       with:
         deployment-id: ${{ vars.PROD_ASTRO_DEPLOYMENT_ID }}
   experimental-push:
-    if: github.ref == 'refs/heads/dev' && ${{ vars.EXP_ASTRO_DEPLOYMENT_ID || 'deactivated' }} != 'deactivated'
-    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev' && vars.EXP_ASTRO_DEPLOYMENT_ID
     steps:
     - name: Deploy to Astro
       env:
