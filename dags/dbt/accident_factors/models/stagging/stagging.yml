@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg_traffic_factors
+    columns:
+      - name: accidents
+        description: "The number of recorded traffic accidents, ranging from minor incidents to significant collisions"
+        data_type: int
+      - name: traffic_fine_amount
+        description: "Represents the average amount of traffic fines (in thousands of USD) in the observed area, linked to enforcement efforts and driver behavior"
+        data_type: numeric
+      - name: traffic_density
+        description: "A score indicating the volume of vehicles in the area, on a scale from 0 (low) to 10 (high)"
+        data_type: numeric
+      - name: traffic_lights
+        description: "Proportion of traffic lights in the area, highlighting intersections with varying levels of control"
+        data_type: numeric
+      - name: pavement_quality
+        description: "A rating (0-5) of road conditions, with higher values indicating better infrastructure"
+        data_type: numeric
+      - name: urban_area
+        description: "Binary indicator showing whether the area is urban (1) or rural (0)"
+        data_type: int
+      - name: average_speed
+        description: "The typical speed of vehicles in kilometers per hour, representing driving conditions"
+        data_type: numeric
+      - name: rain_intensity
+        description: "A scale from 0 (no rain) to 3 (heavy rain), emphasizing the role of weather in accidents"
+        data_type: numeric
+      - name: vehicle_count
+        description: "Estimated number of vehicles (in thousands) present in the area during the observation"
+        data_type: numeric
+      - name: time_of_day
+        description: "A 24-hour format (0 to 24) to capture temporal patterns in accident occurrences"
+        data_type: numeric
+      - name: ds
+        description: "Extraction date"
+        data_type: date
+      - name: id
+        description: "Unique area identifier"
+        data_type: bigint
