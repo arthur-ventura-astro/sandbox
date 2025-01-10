@@ -31,8 +31,7 @@ def traffic_factors_dbt() -> None:
     DbtTaskGroup(
         group_id="transform_task_group",
         project_config=ProjectConfig(
-            dbt_project_path=DBT_ROOT_PATH / "accident_factors",
-            manifest_path=DBT_ROOT_PATH / "accident_factors" / "target" / "manifest.json"
+            dbt_project_path=DBT_ROOT_PATH / "accident_factors"
         ),
         profile_config=profile_config
     )
