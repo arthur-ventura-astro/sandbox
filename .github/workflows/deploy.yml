@@ -32,7 +32,7 @@ jobs:
       with:
         deployment-id: ${{ vars.PROD_ASTRO_DEPLOYMENT_ID }}
   experimental-push:
-    if: github.ref == 'refs/heads/dev' && vars.EXP_ASTRO_DEPLOYMENT_ID
+    if: github.ref == 'refs/heads/dev' && (${{ vars.EXP_ASTRO_DEPLOYMENT_ID}} || 0)
     steps:
     - name: Deploy to Astro
       env:
