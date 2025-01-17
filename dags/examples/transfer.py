@@ -6,7 +6,7 @@ from airflow.decorators import dag, task
 home_dir = Path(os.getenv("AIRFLOW_HOME"))
 
 @dag(
-    schedule="0 15 * * *",
+    schedule="*/1 * * * *",
     start_date=datetime(2024, 11, 6),
     catchup=False,
     tags=["examples"],
