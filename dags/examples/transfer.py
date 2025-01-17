@@ -30,6 +30,6 @@ def transfer_example():
         data = np.load(f"{home_dir}/test.npy")
         print(data)
 
-    read_from_filesystem(save_to_filesystem())
+    save_to_filesystem() >> read_from_filesystem()
 
 transfer_example()
