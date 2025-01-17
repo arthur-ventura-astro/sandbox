@@ -15,7 +15,7 @@ def transfer_example():
     @task(
         queue="test"
     )
-    def save_data():
+    def save_to_filesystem():
         import numpy as np
 
         data = np.array([i for i in range(10)])
@@ -24,12 +24,12 @@ def transfer_example():
     @task(
         queue="test"
     )
-    def read_data():
+    def read_from_filesystem():
         import numpy as np
 
         data = np.load(f"{home_dir}/test.npy")
         print(data)
 
-    save_data(read_data())
+    read_from_filesystem(save_to_filesystem())
 
 transfer_example()
