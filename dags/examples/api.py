@@ -1,8 +1,10 @@
 from airflow.decorators import dag, task
+from airflow.datasets import Dataset
+from airflow.datasets.metadata import Metadata
 from datetime import datetime
-from typing import Dict
 import requests
-import logging
+
+meow_facts_dataset = Dataset("meow_facts")
 
 @dag(
     schedule="0 15 * * *",
@@ -12,12 +14,15 @@ import logging
 )
 def api_example():
     @task(
-        retries=2
+        retries=2,
+        outlets=[meow_facts_dataset]
     )
     def extract_fact(api, ds):
         print(f"Facts extraction, day {ds}.")
         print(f"Hitting [{api}] ...")
         response = requests.get(api).json()
+
+        yield Metadata(meow_facts_dataset, response)
         return response.get("data")[0]
 
     @task
@@ -27,7 +32,6 @@ def api_example():
         lines = fact.split(".")
         for line in lines:
             print(line)
-        print("--------------------")
 
     print_fact(extract_fact(api="{{ conn.meow_facts_api.host }}", ds="{{ds}}"))
 
