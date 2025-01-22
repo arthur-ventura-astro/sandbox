@@ -41,16 +41,22 @@ def read_remote_config(conn_id:str):
     import json
     from io import StringIO
     from airflow.providers.amazon.aws.hooks.s3 import S3Hook
+    from botocore.exceptions import ClientError
 
     s3_hook = S3Hook(aws_conn_id=conn_id)
-    file_data = StringIO(
-        s3_hook.read_key(
-            key=GENERATOR_FILE, bucket_name=DATA_BUCKET
+    try:
+        file_data = StringIO(
+            s3_hook.read_key(
+                key=GENERATOR_FILE, bucket_name=DATA_BUCKET
+            )
         )
-    )
-    return json.loads(
-        str(file_data.read())
-    ) 
+        return json.loads(
+            str(file_data.read())
+        )
+    except ClientError as e:
+        import logging
+        logging.error(e)
+        return []
 
 def save_remote_config(config:str, conn_id:str):
     from airflow.providers.amazon.aws.hooks.s3 import S3Hook

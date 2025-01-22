@@ -5,7 +5,7 @@ from utils.metadata import _parse_metadata
 from airflow.datasets import Dataset
 from airflow.datasets.metadata import Metadata
 
-raw_traffic_factors = Dataset("raw_traffic_factors")
+raw_traffic_accidents = Dataset("raw_traffic_accidents")
 
 @dag(
     schedule="@once",
@@ -13,7 +13,7 @@ raw_traffic_factors = Dataset("raw_traffic_factors")
     catchup=False,
     tags=["examples", "traffic", "pipeline"],
 )
-def traffic_factors_el():
+def traffic_accidents_el():
     @task(
         retries=2
     )
@@ -32,21 +32,21 @@ def traffic_factors_el():
 
     @task(
         retries=2,
-        outlets=[raw_traffic_factors]
+        outlets=[raw_traffic_accidents]
     )
     def load_traffic_data(data, conn):
-        table_name = "raw_traffic.traffic_factors"
+        table_name = "raw_traffic.traffic_accidents"
         load_data(data.get('data'), table_name, conn)
 
-        yield Metadata(raw_traffic_factors, _parse_metadata(data.get('head')))
+        yield Metadata(raw_traffic_accidents, _parse_metadata(data.get('head')))
 
     load_traffic_data(
         data=extract_traffic_data(
-            dataset_url="{{ conn.traffic_factors_bucket.host }}",
+            dataset_url="{{ conn.traffic_accidents_bucket.host }}",
             ds="{{ds}}"
         ),
-        conn="traffic_factors_database"
+        conn="traffic_accidents_database"
     )
 
-traffic_factors_el()
+traffic_accidents_el()
 

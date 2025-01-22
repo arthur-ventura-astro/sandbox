@@ -20,6 +20,8 @@ terraform {
   }
 }
 
+provider "local" {}
+
 provider "aws" {
   profile = "training"
   region  = module.data.project_region
