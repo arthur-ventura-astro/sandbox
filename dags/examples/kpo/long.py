@@ -16,8 +16,7 @@ def kpo_long_running_example():
         image="python",
         namespace=NAMESPACE,
         in_cluster=True,
-        get_logs=True,
-        image_pull_policy="Always"
+        get_logs=True
     )
     def long_running(iter, sleep_time=60):
         from time import sleep
@@ -28,12 +27,7 @@ def kpo_long_running_example():
             print(f"Iteration [{i}/{iter}]")
         print("Finished")
 
-    @task.kubernetes(
-        image="python",
-        namespace=NAMESPACE,
-        in_cluster=True,
-        get_logs=True,
-        image_pull_policy="Always",
+    @task(
         queue='isolated'
     )
     def long_running_isolated(iter, sleep_time=60):

@@ -7,6 +7,7 @@ locals {
   
   project_tags = {
     Project = "Astro"
+    Owner = "Ventura"
   }
 }
 
