@@ -3,7 +3,7 @@ from datetime import datetime
 from airflow.providers.amazon.aws.operators.eks import EksPodOperator
 
 @dag(
-    schedule="0 * * * *",
+    schedule="0 15 * * *",
     start_date=datetime(2024, 11, 29),
     catchup=False,
     tags=["examples"],
@@ -17,7 +17,8 @@ def eks_remote_example():
         image="hello-world",
         get_logs=True,
         is_delete_operator_pod=True,
-        aws_conn_id='aws_default'
+        aws_conn_id='aws_default',
+        startup_timeout_seconds=240
     )
 
 eks_remote_example()

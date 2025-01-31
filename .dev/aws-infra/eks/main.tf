@@ -6,8 +6,10 @@ module "eks" {
   cluster_version = "1.31"
 
   # Optional
-  cluster_endpoint_public_access = false
-  # Optional: Adds the current caller identity as an administrator via cluster access entry
+  cluster_endpoint_public_access = true
+  cluster_endpoint_public_access_cidrs = concat(
+    local.ipv4_allow_list
+  )
   enable_cluster_creator_admin_permissions = true
 
   vpc_id     = local.vpc_id
@@ -28,7 +30,7 @@ module "eks" {
 
   access_entries = {
     deployments = {
-      principal_arn = aws_iam_role.deployment_access.arn
+      principal_arn = local.role_arn
 
       policy_associations = {
         deployments = {
@@ -41,8 +43,4 @@ module "eks" {
       }
     }
   }
-
-  depends_on = [
-    aws_iam_role.deployment_access
-  ]
 }

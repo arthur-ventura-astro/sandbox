@@ -1,5 +1,6 @@
 resource "aws_iam_user" "airflow_xcom" {
   name = "airflow-xcom"
+  force_destroy = true
 }
 
 resource "aws_iam_access_key" "airflow_xcom" {

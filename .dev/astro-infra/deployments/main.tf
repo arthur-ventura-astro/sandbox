@@ -31,7 +31,29 @@ resource "astro_deployment" "experimental" {
   scheduler_size        = "SMALL"
   workspace_id          = var.workspace
 
-  environment_variables = []
+  environment_variables = [{
+      key       = "AWS_ACCESS_KEY_ID"
+      value     = var.aws_access_key_id
+      is_secret = true
+    }, {
+      key       = "AWS_SECRET_ACCESS_KEY"
+      value     = var.aws_secret_access_key
+      is_secret = true
+    },
+    {
+      key       = "AWS_DEFAULT_REGION"
+      value     = "us-east-2"
+      is_secret = false
+    },
+    {
+      key       = "AIRFLOW__SECRETS__BACKEND"
+      value     = "airflow.providers.amazon.aws.secrets.systems_manager.SystemsManagerParameterStoreBackend"
+      is_secret = false
+    }, {
+      key       = "AIRFLOW__SECRETS__BACKEND_KWARGS"
+      value     = "{\"connections_prefix\": \"airflow/connections\", \"variables_prefix\": \"airflow/variables\"}"
+      is_secret = false
+  }]
 }
 
 resource "astro_api_token" "experimental" {
