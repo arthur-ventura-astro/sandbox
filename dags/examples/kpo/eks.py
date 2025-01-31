@@ -9,7 +9,7 @@ from airflow.providers.amazon.aws.operators.eks import EksPodOperator
     tags=["examples"],
 )
 def eks_remote_example():
-    task = EksPodOperator(
+    EksPodOperator(
         task_id="test_pod",
         pod_name="test_pod",
         cluster_name="astro-sandbox-cluster",
