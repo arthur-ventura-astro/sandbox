@@ -3,3 +3,7 @@ resource "aws_ssm_parameter" "role_arn" {
   type = "String"
   value = aws_iam_role.deployments.arn
 }
+
+data "aws_ssm_parameter" "experimental_identity" {
+  name = "${module.data.project_ssm}/astro/experimental/workload-identity"
+}

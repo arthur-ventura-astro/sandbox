@@ -10,7 +10,7 @@ module "ecr" {
 
   repository_name = local.repository_name
   repository_read_access_arns = [
-    module.data.astro_root # for standard cluster
+    local.deployments_role
   ]
   repository_lifecycle_policy = jsonencode({
     rules = [

@@ -9,6 +9,8 @@ locals {
     "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
     "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   ]
+
+  workload_identity = data.aws_ssm_parameter.experimental_identity.value
 }
 
 
@@ -22,7 +24,7 @@ resource "aws_iam_role" "deployments" {
         Effect = "Allow",
         Principal = {
           AWS = [
-            var.user_arn
+            local.workload_identity
           ]
         },
         Action = "sts:AssumeRole"

@@ -6,6 +6,10 @@ variable "ipv6_allow_list" {
   type = string
   default = "::/0"
 }
+variable "project_id" {
+  type = string
+}
+
 locals {
   ipv4_allow_list = split(",", var.ipv4_allow_list)
   ipv6_allow_list = split(",", var.ipv6_allow_list)

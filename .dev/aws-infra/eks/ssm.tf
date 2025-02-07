@@ -1,7 +1,7 @@
 locals {
   vpc_id              = data.aws_ssm_parameter.vpc_id.value
   vpc_private_subnets = split(",", data.aws_ssm_parameter.vpc_private_subnets.value)
-  role_arn            = "arn:aws:iam::${var.project_id}:role/${module.data.project_name}-deployments"
+  role_arn            = data.aws_ssm_parameter.deployments_role.arn
   ipv4_allow_list     = var.ipv4_allow_list != "" ? split(",", var.ipv4_allow_list) : []
 }
 
@@ -18,4 +18,7 @@ data "aws_ssm_parameter" "vpc_id" {
 }
 data "aws_ssm_parameter" "vpc_private_subnets" {
   name = "${module.data.project_ssm}/vpc/private-subnets"
+}
+data "aws_ssm_parameter" "deployments_role" {
+  name = "${module.data.project_ssm}/iam/deployments-role-arn"
 }

@@ -66,4 +66,11 @@ resource "astro_api_token" "experimental" {
   }]
 }
 
+resource "local_file" "api_token" {
+  content  = "export ASTRO_API_TOKEN=${astro_api_token.experimental.token}"
+  filename = "${path.module}/.secrets/.env"
 
+  provisioner "local-exec" {
+    command = "export ASTRO_API_TOKEN=${astro_api_token.experimental.token} && cd ../../.. && astro deploy ${astro_deployment.experimental.id} -f"
+  }
+}
