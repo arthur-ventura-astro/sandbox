@@ -1,3 +1,5 @@
 operators/*/*
 operators/*
 utils/*
+automated_workflows/models/*
+automated_workflows/templates/*
