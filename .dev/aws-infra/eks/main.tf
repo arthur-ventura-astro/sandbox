@@ -34,10 +34,9 @@ module "eks" {
 
       policy_associations = {
         deployments = {
-          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSEditPolicy"
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminPolicy"
           access_scope = {
-            namespaces = ["default"]
-            type       = "namespace"
+            type       = "cluster"
           }
         }
       }

@@ -1,7 +1,7 @@
 locals {
   vpc_id              = data.aws_ssm_parameter.vpc_id.value
   vpc_private_subnets = split(",", data.aws_ssm_parameter.vpc_private_subnets.value)
-  role_arn            = data.aws_ssm_parameter.deployments_role.arn
+  role_arn            = data.aws_ssm_parameter.deployments_role.value
   ipv4_allow_list     = var.ipv4_allow_list != "" ? split(",", var.ipv4_allow_list) : []
 }
 
