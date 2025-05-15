@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: traffic_factors_latest
+  - name: traffic_accidents_latest
     description: Latest extraction data
     columns:
       - name: accidents

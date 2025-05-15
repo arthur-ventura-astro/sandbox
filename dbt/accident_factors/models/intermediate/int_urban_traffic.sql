@@ -1,5 +1,5 @@
 with
-    rural_traffic as (
+    urban_traffic as (
         select
             s.id as id,
             s.accidents as accidents,
@@ -11,7 +11,7 @@ with
             s.rain_intensity as rain_intensity,
             s.vehicle_count as vehicle_count,
             s.time_of_day as time_of_day
-        from {{ ref('int_traffic_factors_latest') }} as s where s.urban_area = 0
+        from {{ ref('int_traffic_accidents_latest') }} as s where s.urban_area = 1
     )
 
-    select * from rural_traffic
+    select * from urban_traffic

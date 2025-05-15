@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw_traffic
+    description: Key traffic accidents factors dataset (https://www.kaggle.com/datasets/torresdanilo/key-factors-influencing-traffic-accidents)
+    schema: raw_traffic
+    tables:
+      - name: traffic_accidents

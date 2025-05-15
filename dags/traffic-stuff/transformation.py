@@ -8,7 +8,7 @@ from cosmos import DbtTaskGroup, ProfileConfig, ProjectConfig
 from cosmos.profiles import PostgresUserPasswordProfileMapping
 from airflow.datasets import Dataset
 
-DBT_ROOT_PATH = Path(os.getenv("AIRFLOW_HOME")) / "dags" / "dbt"
+DBT_ROOT_PATH = Path(os.getenv("AIRFLOW_HOME")) / "dbt"
 
 
 profile_config = ProfileConfig(
@@ -27,7 +27,7 @@ profile_config = ProfileConfig(
     catchup=False,
     tags=["examples", "traffic", "pipeline"]
 )
-def traffic_accidents_dbt() -> None:
+def traffic_accidents_incremental_dbt() -> None:
     DbtTaskGroup(
         group_id="transform_task_group",
         project_config=ProjectConfig(
@@ -36,4 +36,23 @@ def traffic_accidents_dbt() -> None:
         profile_config=profile_config
     )
 
-traffic_accidents_dbt()
+@dag(
+    schedule=None,
+    start_date=datetime(2025, 1, 9),
+    catchup=False,
+    tags=["examples", "traffic", "pipeline"]
+)
+def traffic_accidents_full_refresh_dbt() -> None:
+    DbtTaskGroup(
+        group_id="transform_task_group",
+        project_config=ProjectConfig(
+            dbt_project_path=DBT_ROOT_PATH / "accident_factors"
+        ),
+        operator_args={
+            "full_refresh": True
+        },
+        profile_config=profile_config
+    )
+
+traffic_accidents_incremental_dbt()
+traffic_accidents_full_refresh_dbt()
