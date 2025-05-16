@@ -33,9 +33,9 @@ models:
       - name: time_of_day
         description: "A 24-hour format (0 to 24) to capture temporal patterns in accident occurrences"
         data_type: numeric
-      - name: ds
-        description: "Extraction date"
-        data_type: date
+      - name: update_at
+        description: "Extraction datetime"
+        data_type: datetime
       - name: id
         description: "Unique area identifier"
         data_type: bigint

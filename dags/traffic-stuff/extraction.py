@@ -17,11 +17,11 @@ def traffic_accidents_el():
     @task(
         retries=2
     )
-    def extract_traffic_data(dataset_url, ds):
+    def extract_traffic_data(dataset_url, ts_nodash):
         import pandas as pd
 
         df = pd.read_csv(dataset_url)
-        df['ds'] = ds
+        df['updated_at'] = ts_nodash
         df['id'] = [i for i in range(len(df))]
         head = df.head()
 
@@ -43,7 +43,7 @@ def traffic_accidents_el():
     load_traffic_data(
         data=extract_traffic_data(
             dataset_url="{{ conn.traffic_accidents_bucket.host }}",
-            ds="{{ds}}"
+            ts_nodash="{{ts_nodash}}"
         ),
         conn="traffic_accidents_database"
     )
