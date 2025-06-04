@@ -25,6 +25,7 @@ def test_environment_manager():
         var = os.getenv("os_all_deployments")
         print(var)
     
+    print_generic_airflow_variable()
     print_environment_manager_airflow_variable()
     print_environment_manager_os_variable()
 
