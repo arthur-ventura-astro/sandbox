@@ -2,12 +2,7 @@ name: Astronomer CI - Deploy code (Multiple Branches)
 
 on:
   push:
-    branches: [dev]
-  pull_request:
-    types:
-      - closed
-    branches: [main]
-
+    branches: [dev, main]
 jobs:
   dev-push:
     if: github.ref == 'refs/heads/dev'
@@ -21,7 +16,7 @@ jobs:
       with:
         deployment-id: ${{ vars.DEV_ASTRO_DEPLOYMENT_ID }}
   prod-push:
-    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to Astro
@@ -31,3 +26,13 @@ jobs:
         ASTRO_API_TOKEN: ${{ secrets.PROD_ASTRO_API_TOKEN }}
       with:
         deployment-id: ${{ vars.PROD_ASTRO_DEPLOYMENT_ID }}
+  experimental-push:
+    if: github.ref == 'refs/heads/dev' && (${{ vars.EXP_ASTRO_DEPLOYMENT_ID}} || 0)
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to Astro
+      env:
+        ASTRO_API_TOKEN: ${{ secrets.EXP_ASTRO_API_TOKEN }}
+      uses: astronomer/deploy-action@v0.8.0
+      with:
+        deployment-id: ${{ vars.EXP_ASTRO_DEPLOYMENT_ID }}

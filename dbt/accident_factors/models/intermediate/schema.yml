@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: traffic_accidents_latest
+    description: Latest extraction data
+    columns:
+      - name: accidents
+      - name: traffic_fine_amount
+      - name: traffic_density
+      - name: traffic_lights
+      - name: pavement_quality
+      - name: urban_area
+      - name: average_speed
+      - name: rain_intensity
+      - name: vehicle_count
+      - name: time_of_day
+      - name: ds
+      - name: id
+
+  - name: rural_traffic
+    description: Rural area traffic factors
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+      - name: accidents
+      - name: traffic_fine_amount
+      - name: traffic_density
+      - name: traffic_lights
+      - name: pavement_quality
+      - name: average_speed
+      - name: rain_intensity
+      - name: vehicle_count
+      - name: time_of_day
+
+  - name: urban_traffic
+    description: Urban area traffic factors
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+      - name: accidents
+      - name: traffic_fine_amount
+      - name: traffic_density
+      - name: traffic_lights
+      - name: pavement_quality
+      - name: average_speed
+      - name: rain_intensity
+      - name: vehicle_count
+      - name: time_of_day

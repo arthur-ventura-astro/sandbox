@@ -21,6 +21,3 @@ with DAG(
     )
 
     sleep_task >> echo_task
-
-
-

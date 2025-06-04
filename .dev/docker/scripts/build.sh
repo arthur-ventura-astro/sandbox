@@ -1,0 +1,1 @@
+docker build -t $PROJECT_ID.dkr.ecr.us-east-2.amazonaws.com/astro-sandbox-custom:$1 $2
