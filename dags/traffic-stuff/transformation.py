@@ -4,7 +4,7 @@ from pathlib import Path
 
 from airflow.decorators import dag
 
-from cosmos import DbtTaskGroup, ProfileConfig, ProjectConfig
+from cosmos import DbtTaskGroup, ProfileConfig, ProjectConfig, RenderConfig
 from cosmos.profiles import PostgresUserPasswordProfileMapping
 from airflow.datasets import Dataset
 
@@ -47,6 +47,9 @@ def traffic_accidents_full_refresh_dbt() -> None:
         group_id="transform_task_group",
         project_config=ProjectConfig(
             dbt_project_path=DBT_ROOT_PATH / "accident_factors"
+        ),
+        render_config=RenderConfig(
+            select=["int_urban_traffic","int_rural_traffic"],
         ),
         operator_args={
             "full_refresh": True
