@@ -1,5 +1,5 @@
 import os
-from airflow.decorators import DAG
+from airflow.models import DAG
 from airflow.operators.python import PythonOperator
 from pendulum import datetime
 
