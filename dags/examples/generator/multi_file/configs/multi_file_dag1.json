@@ -1,0 +1,6 @@
+{
+    "dag_id": "multi_file_dag1",
+    "schedule": "'@daily'",
+    "bash_command": "'echo $ENVVAR'",
+    "env_var": "'Hello! :)'"
+}

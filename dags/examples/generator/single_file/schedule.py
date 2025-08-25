@@ -2,7 +2,7 @@ from datetime import datetime
 from airflow.decorators import dag, task
 from airflow.datasets import Dataset
 from airflow.datasets.metadata import Metadata
-from examples.generator.common import (
+from examples.generator.single_file.common import (
     dynamic_params,
     save_remote_config
 )

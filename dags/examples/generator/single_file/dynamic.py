@@ -1,6 +1,6 @@
 from datetime import datetime
 from airflow.decorators import dag, task
-from examples.generator.common import (
+from examples.generator.single_file.common import (
     read_remote_config,
     random_processing
 )

@@ -1,3 +1,4 @@
 operators/*/*
 operators/*
 utils/*
+/usr/local/airflow/dags/examples/generator/multi_file/template.py
