@@ -11,7 +11,7 @@ for filename in os.listdir(config_filepath):
     f = open(config_filepath + filename)
     config = json.load(f)
 
-    new_filename =  f"{generated_dags_path}/{config["dag_id"]}.py"
+    new_filename =  f"{generated_dags_path}/{config['dag_id']}.py"
     shutil.copyfile(f"{module_path}/template.py", new_filename)
 
     for line in fileinput.input(new_filename, inplace=True):
@@ -21,7 +21,7 @@ for filename in os.listdir(config_filepath):
         line = line.replace("$env_var", {"123": "123"})
         print(line, end="")
 
-        generated_dags.append(f"{config["dag_id"]}.py")
+        generated_dags.append(f"{config['dag_id']}.py")
 
 for filename in os.listdir(generated_dags_path):
     if filename.endswith(".py") and filename not in generated_dags:
