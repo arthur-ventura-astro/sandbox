@@ -8,11 +8,18 @@ jobs:
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v5
+    - name: Execute DAG generator
+    - uses: actions/setup-python@v6
+      with:
+        python-version: '3.10'
+    - run: python -m include.multi_file.generator
     - name: Deploy to Astro
       env:
         ## Sets DEV Deployment API credential as an environment variable
         ASTRO_API_TOKEN: ${{ secrets.DEV_ASTRO_API_TOKEN }}
-      uses: astronomer/deploy-action@v0.8.0
+      uses: astronomer/deploy-action@v0.10.0
       with:
         deployment-id: ${{ vars.DEV_ASTRO_DEPLOYMENT_ID }}
   prod-push:
@@ -20,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to Astro
-      uses: astronomer/deploy-action@v0.8.0
+      uses: astronomer/deploy-action@v0.10.0
       env:
         ## Sets Prod Deployment API credential as an environment variable
         ASTRO_API_TOKEN: ${{ secrets.PROD_ASTRO_API_TOKEN }}
@@ -33,6 +40,6 @@ jobs:
     - name: Deploy to Astro
       env:
         ASTRO_API_TOKEN: ${{ secrets.EXP_ASTRO_API_TOKEN }}
-      uses: astronomer/deploy-action@v0.8.0
+      uses: astronomer/deploy-action@v0.10.0
       with:
         deployment-id: ${{ vars.EXP_ASTRO_DEPLOYMENT_ID }}

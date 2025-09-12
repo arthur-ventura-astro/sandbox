@@ -2,5 +2,5 @@
     "dag_id": "multi_file_dag2",
     "schedule": "'@daily'",
     "bash_command": "'echo $ENVVAR'",
-    "env_var": "'Hello! :)'"
+    "env_var": "'Hello 2! :)'"
 }
