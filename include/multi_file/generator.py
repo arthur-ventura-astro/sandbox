@@ -15,10 +15,10 @@ for filename in os.listdir(config_filepath):
     shutil.copyfile(f"{module_path}/template.py", new_filename)
 
     for line in fileinput.input(new_filename, inplace=True):
-        line = line.replace("$dag_id", config["dag_id"])
-        line = line.replace("$schedule", config["schedule"])
-        line = line.replace("$bash_command", config["bash_command"])
-        line = line.replace("$env_var", {"123": "123"})
+        line = line.replace("$dag_id", str(config["dag_id"]))
+        line = line.replace("$schedule", str(config["schedule"]))
+        line = line.replace("$bash_command", str(config["bash_command"]))
+        line = line.replace("$env_var", str({"123": "123"}))
         print(line, end="")
 
         generated_dags.append(f"{config['dag_id']}.py")
