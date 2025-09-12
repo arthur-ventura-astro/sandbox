@@ -11,10 +11,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v5
     - name: Execute DAG generator
-    - uses: actions/setup-python@v6
+      uses: actions/setup-python@v6
       with:
         python-version: '3.10'
-    - run: python -m include.multi_file.generator
+      run: python -m include.multi_file.generator
     - name: Deploy to Astro
       env:
         ## Sets DEV Deployment API credential as an environment variable
