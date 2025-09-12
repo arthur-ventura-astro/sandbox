@@ -26,6 +26,13 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v5
+    - name: Execute DAG generator
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.10'
+    - run: python -m include.multi_file.generator
     - name: Deploy to Astro
       uses: astronomer/deploy-action@v0.10.0
       env:
