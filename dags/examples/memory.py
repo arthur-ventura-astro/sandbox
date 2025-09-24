@@ -10,7 +10,7 @@ def load_data(rows, cols):
 
     data = []
     for i in range(rows):
-        data.append({f"col_{c}": "x" * 1000 for c in range(cols)})
+        data.append({f"col_{c}": "x." * 1000 for c in range(cols)})
 
     df = pd.DataFrame(data)
 
@@ -24,9 +24,11 @@ def process_data(df, cols):
     for c in range(cols):
         col = f"col_{c}"
         factor = randint(1, 3)
-        df[col] *= factor
+        d_col = df[col]
+        for row in d_col:
+            r = row
+            total_factor += len(r.split('.'))
         print(col, factor)
-        total_factor += factor    
 
     return total_factor
 
