@@ -10,7 +10,7 @@ def load_data(rows, cols):
 
     data = []
     for i in range(rows):
-        data.append({f"col_{c}": "x" * randint(0, rows) for c in range(cols)})
+        data.append({f"col_{c}": "x" * randint(0, 1000) for c in range(cols)})
 
     df = pd.DataFrame(data)
 
@@ -50,7 +50,7 @@ def process_optimized(rows, cols, iterations):
 # Definitions
 ITERATIONS = [int((i % 10) * 2) for i in range(1000)]
 COLS = 10
-ROWS = 10 ** 6
+ROWS = 10 ** 5
 
 
 # DAG Configuration
