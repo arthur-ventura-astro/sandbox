@@ -10,7 +10,7 @@ def load_data(rows, cols):
 
     data = []
     for i in range(rows):
-        data.append({f"col_{c}": "x" * randint(0, i) for c in range(cols)})
+        data.append({f"col_{c}": "x" * randint(0, rows) for c in range(cols)})
 
     df = pd.DataFrame(data)
 
