@@ -10,7 +10,7 @@ def load_data(rows, cols):
 
     data = []
     for i in range(rows):
-        data.append({f"col_{c}": randint(0, i) for c in range(cols)})
+        data.append({f"col_{c}": "x" * randint(0, i) for c in range(cols)})
 
     df = pd.DataFrame(data)
 
@@ -23,7 +23,7 @@ def process_data(df, cols):
     print("Factor Multiplication")
     for c in range(cols):
         col = f"col_{c}"
-        df[col] *= randint(0, 100)
+        df[col] *= randint(1, 3)
         factor = df[col].max()
         print(col, factor)
         total_factor += factor    
@@ -50,7 +50,7 @@ def process_optimized(rows, cols, iterations):
 # Definitions
 ITERATIONS = [int((i % 10) * 2) for i in range(1000)]
 COLS = 10
-ROWS = 10 ** 7
+ROWS = 10 ** 6
 
 
 # DAG Configuration
