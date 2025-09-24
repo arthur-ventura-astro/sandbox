@@ -23,8 +23,8 @@ def process_data(df, cols):
     print("Factor Multiplication")
     for c in range(cols):
         col = f"col_{c}"
-        df[col] *= randint(1, 3)
-        factor = df[col].max()
+        factor = randint(1, 3)
+        df[col] *= factor
         print(col, factor)
         total_factor += factor    
 
