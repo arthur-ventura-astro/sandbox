@@ -3,6 +3,7 @@ from datetime import datetime
 from pathlib import Path
 
 from airflow.decorators import dag
+from airflow.models.param import Param
 
 from cosmos import DbtTaskGroup, ProfileConfig, ProjectConfig
 from cosmos.profiles import PostgresUserPasswordProfileMapping
@@ -25,34 +26,22 @@ profile_config = ProfileConfig(
     schedule=Dataset("raw_traffic_accidents"),
     start_date=datetime(2025, 1, 9),
     catchup=False,
-    tags=["examples", "traffic", "pipeline"]
+    params=dict(
+        full_refresh=Param(False, type="boolean")
+    ),
+    tags=["examples", "traffic", "pipeline"],
+    render_template_as_native_obj=True
 )
-def traffic_accidents_incremental_dbt() -> None:
-    DbtTaskGroup(
-        group_id="transform_task_group",
-        project_config=ProjectConfig(
-            dbt_project_path=DBT_ROOT_PATH / "accident_factors"
-        ),
-        profile_config=profile_config
-    )
-
-@dag(
-    schedule=None,
-    start_date=datetime(2025, 1, 9),
-    catchup=False,
-    tags=["examples", "traffic", "pipeline"]
-)
-def traffic_accidents_full_refresh_dbt() -> None:
+def traffic_accidents_dbt() -> None:
     DbtTaskGroup(
         group_id="transform_task_group",
         project_config=ProjectConfig(
             dbt_project_path=DBT_ROOT_PATH / "accident_factors"
         ),
         operator_args={
-            "full_refresh": True
+            "full_refresh": "{{ params.full_refresh }}",
         },
         profile_config=profile_config
     )
 
-traffic_accidents_incremental_dbt()
-traffic_accidents_full_refresh_dbt()
+traffic_accidents_dbt()
