@@ -48,9 +48,9 @@ def process_optimized(rows, cols, iterations):
 
 
 # Definitions
-ITERATIONS = [int((i % 10) * 2) for i in range(100)]
+ITERATIONS = [int((i % 10) * 2) for i in range(1000)]
 COLS = 10
-ROWS = 10 ** 6
+ROWS = 10 ** 7
 
 
 # DAG Configuration
