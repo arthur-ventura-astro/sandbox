@@ -1,0 +1,1334 @@
+{
+  "summary": {
+    "total_dags": 23,
+    "total_issues": 125,
+    "errors": 5,
+    "warnings": 120,
+    "infos": 0
+  },
+  "dags": [
+    {
+      "dag_id": "ImportError:multi_file_dag1.py",
+      "total_issues": 1,
+      "errors": 1,
+      "warnings": 0,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": null,
+          "category": "PARSING",
+          "severity": "ERROR",
+          "message": "Failed to import DAG: Traceback (most recent call last):\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/usr/local/airflow/dags/examples/generated_dags/multi_file_dag1.py\", line 5, in <module>\n    dag_id = multi_file_dag1\n             ^^^^^^^^^^^^^^^\nNameError: name 'multi_file_dag1' is not defined\n",
+          "file_path": "/usr/local/airflow/dags/examples/generated_dags/multi_file_dag1.py",
+          "metric_value": null,
+          "recommendation": "Fix syntax errors, missing imports, or dependency issues"
+        }
+      ]
+    },
+    {
+      "dag_id": "ImportError:multi_file_dag2.py",
+      "total_issues": 1,
+      "errors": 1,
+      "warnings": 0,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": null,
+          "category": "PARSING",
+          "severity": "ERROR",
+          "message": "Failed to import DAG: Traceback (most recent call last):\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/usr/local/airflow/dags/examples/generated_dags/multi_file_dag2.py\", line 5, in <module>\n    dag_id = multi_file_dag2\n             ^^^^^^^^^^^^^^^\nNameError: name 'multi_file_dag2' is not defined\n",
+          "file_path": "/usr/local/airflow/dags/examples/generated_dags/multi_file_dag2.py",
+          "metric_value": null,
+          "recommendation": "Fix syntax errors, missing imports, or dependency issues"
+        }
+      ]
+    },
+    {
+      "dag_id": "ImportError:multi_file_dag3.py",
+      "total_issues": 1,
+      "errors": 1,
+      "warnings": 0,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": null,
+          "category": "PARSING",
+          "severity": "ERROR",
+          "message": "Failed to import DAG: Traceback (most recent call last):\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/usr/local/airflow/dags/examples/generated_dags/multi_file_dag3.py\", line 5, in <module>\n    dag_id = multi_file_dag3\n             ^^^^^^^^^^^^^^^\nNameError: name 'multi_file_dag3' is not defined\n",
+          "file_path": "/usr/local/airflow/dags/examples/generated_dags/multi_file_dag3.py",
+          "metric_value": null,
+          "recommendation": "Fix syntax errors, missing imports, or dependency issues"
+        }
+      ]
+    },
+    {
+      "dag_id": "api_example",
+      "total_issues": 1,
+      "errors": 0,
+      "warnings": 1,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "print_fact",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "basic_example",
+      "total_issues": 2,
+      "errors": 0,
+      "warnings": 2,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "sleep_task",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "echo_task",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "custom_example",
+      "total_issues": 1,
+      "errors": 0,
+      "warnings": 1,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "random_task",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "dynamic_generator_params",
+      "total_issues": 2,
+      "errors": 0,
+      "warnings": 2,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "get_params",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "save_params",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "eks_remote_example",
+      "total_issues": 2,
+      "errors": 1,
+      "warnings": 1,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "test_pod",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "test_pod",
+          "category": "CONNECTIONS",
+          "severity": "ERROR",
+          "message": "Connection 'aws_default' not found in Airflow",
+          "file_path": null,
+          "metric_value": null,
+          "recommendation": "Create connection 'aws_default' in Airflow UI or define it in airflow_settings.yaml"
+        }
+      ]
+    },
+    {
+      "dag_id": "kpo_astro_example",
+      "total_issues": 1,
+      "errors": 0,
+      "warnings": 1,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "print_random",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "kpo_custom_image_example",
+      "total_issues": 3,
+      "errors": 0,
+      "warnings": 3,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "print_random",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "get_image",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "xcom_image",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "kpo_default_example",
+      "total_issues": 1,
+      "errors": 0,
+      "warnings": 1,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "hello_world",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "kpo_long_running_example",
+      "total_issues": 2,
+      "errors": 0,
+      "warnings": 2,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "long_running",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "long_running_isolated",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "kpo_remote_example",
+      "total_issues": 1,
+      "errors": 0,
+      "warnings": 1,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "print_random",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "memory_consumption_example",
+      "total_issues": 2,
+      "errors": 0,
+      "warnings": 2,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "unoptimized_data_processing",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "optimzed_data_processing",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "s3_example",
+      "total_issues": 1,
+      "errors": 0,
+      "warnings": 1,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "save_data_to_s3",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "static_dag_n0",
+      "total_issues": 30,
+      "errors": 0,
+      "warnings": 30,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "task_n0",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n1",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n2",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n3",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n4",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n5",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n6",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n7",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n8",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n9",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n10",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n11",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n12",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n13",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n14",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n15",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n16",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n17",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n18",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n19",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n20",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n21",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n22",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n23",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n24",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n25",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n26",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n27",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n28",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n29",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "static_dag_n1",
+      "total_issues": 30,
+      "errors": 0,
+      "warnings": 30,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "task_n0",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n1",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n2",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n3",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n4",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n5",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n6",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n7",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n8",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n9",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n10",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n11",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n12",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n13",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n14",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n15",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n16",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n17",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n18",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n19",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n20",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n21",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n22",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n23",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n24",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n25",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n26",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n27",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n28",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n29",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "static_dag_n2",
+      "total_issues": 30,
+      "errors": 0,
+      "warnings": 30,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "task_n0",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n1",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n2",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n3",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n4",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n5",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n6",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n7",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n8",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n9",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n10",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n11",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n12",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n13",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n14",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n15",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n16",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n17",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n18",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n19",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n20",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n21",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n22",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n23",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n24",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n25",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n26",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n27",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n28",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "task_n29",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "test_memory_heavy_dag",
+      "total_issues": 2,
+      "errors": 0,
+      "warnings": 2,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": null,
+          "category": "PARSING",
+          "severity": "WARNING",
+          "message": "DAG parsing uses significant memory (154.8 MB)",
+          "file_path": "/usr/local/airflow/dags/examples/test_memory_dag.py",
+          "metric_value": 154.75632095336914,
+          "recommendation": "Consider reducing module-level memory usage"
+        },
+        {
+          "task_id": "process_task",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "traffic_accidents_dbt",
+      "total_issues": 4,
+      "errors": 0,
+      "warnings": 4,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "transform_task_group.int_rural_traffic_run",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "transform_task_group.int_traffic_accidents_latest_run",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "transform_task_group.int_urban_traffic_run",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "transform_task_group.stg_traffic_accidents_run",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    },
+    {
+      "dag_id": "traffic_accidents_el",
+      "total_issues": 1,
+      "errors": 1,
+      "warnings": 0,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "load_traffic_data",
+          "category": "CONNECTIONS",
+          "severity": "ERROR",
+          "message": "Connection 'traffic_accidents_database' not found in Airflow",
+          "file_path": null,
+          "metric_value": null,
+          "recommendation": "Create connection 'traffic_accidents_database' in Airflow UI or define it in airflow_settings.yaml"
+        }
+      ]
+    },
+    {
+      "dag_id": "transfer_example",
+      "total_issues": 6,
+      "errors": 0,
+      "warnings": 6,
+      "infos": 0,
+      "issues": [
+        {
+          "task_id": "save_to_filesystem",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "read_from_filesystem",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "save_to_xcom_small",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "read_from_xcom_small",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "save_to_xcom_large",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        },
+        {
+          "task_id": "read_from_xcom_large",
+          "category": "TASK_CONFIG",
+          "severity": "WARNING",
+          "message": "Task has no retries configured (retries=0)",
+          "file_path": null,
+          "metric_value": 0,
+          "recommendation": "Set retries to at least 2 for resilience"
+        }
+      ]
+    }
+  ]
+}

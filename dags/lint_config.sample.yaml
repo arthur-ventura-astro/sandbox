@@ -1,0 +1,74 @@
+# Sample DAG Linter Configuration
+# Copy this file and customize for your project
+
+# Parsing Performance Checks
+parsing:
+  enabled: true
+  checks:
+    parsing_time:
+      enabled: true
+      warning_threshold: 3.0  # Stricter than default
+      error_threshold: 8.0
+    import_errors:
+      enabled: true
+    dags_per_file:
+      enabled: false  # Disable this check
+
+# Task Configuration Checks
+tasks:
+  enabled: true
+  checks:
+    retries:
+      enabled: true
+      min_retries: 2  # Require more retries
+    retry_delay:
+      enabled: false  # Don't check retry delay
+    execution_timeout:
+      enabled: false
+    concurrency:
+      enabled: false  # Don't check concurrency
+    pool_usage:
+      enabled: false  # Don't check pools
+
+# Sensor Configuration Checks
+sensors:
+  enabled: false  # Disable all sensor checks
+
+# Connection Checks
+connections:
+  enabled: true
+  checks:
+    connection_exists:
+      enabled: true
+    hardcoded_credentials:
+      enabled: true
+    test_on_failure:
+      enabled: false
+
+# DAG Configuration Checks
+dags:
+  enabled: true
+  checks:
+    tags:
+      enabled: true
+    documentation:
+      enabled: false  # Don't require docs
+    catchup:
+      enabled: true
+    start_date:
+      enabled: true
+    schedule_interval:
+      enabled: false
+    default_args:
+      enabled: false
+    dag_id_naming:
+      enabled: false
+
+# General Settings
+general:
+  exclude_dags:
+    - "test_*"
+    - "example_*"
+  exclude_folders:
+    - "examples"
+  include_examples: false

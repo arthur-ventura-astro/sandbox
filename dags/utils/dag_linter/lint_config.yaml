@@ -1,0 +1,121 @@
+# DAG Linter Configuration File
+# This file controls which checks are enabled and their thresholds
+
+# Parsing Performance Checks
+parsing:
+  enabled: true
+  checks:
+    parsing_time:
+      enabled: true
+      warning_threshold: 5.0  # seconds
+      error_threshold: 10.0   # seconds
+    import_errors:
+      enabled: true
+    dags_per_file:
+      enabled: true
+      max_dags_warning: 3
+      max_dags_error: 5
+
+# Task Configuration Checks
+tasks:
+  enabled: true
+  checks:
+    retries:
+      enabled: true
+      min_retries: 1
+      max_retries_warning: 5
+    retry_delay:
+      enabled: true
+      recommended_delay: 300  # seconds (5 minutes)
+    execution_timeout:
+      enabled: true
+      require_timeout: true
+      min_timeout: 300  # seconds (5 minutes)
+    concurrency:
+      enabled: true
+      max_task_concurrency_warning: 16
+    pool_usage:
+      enabled: true
+      recommend_pools: true
+
+# Sensor Configuration Checks
+sensors:
+  enabled: true
+  checks:
+    sensor_mode:
+      enabled: true
+      recommend_reschedule: true
+      reschedule_timeout_threshold: 300  # seconds
+    poke_interval:
+      enabled: true
+      min_poke_interval: 30  # seconds
+      max_poke_interval: 3600  # seconds (1 hour)
+    sensor_timeout:
+      enabled: true
+      require_timeout: true
+      min_timeout: 300  # seconds
+      max_timeout: 86400  # seconds (24 hours)
+    soft_fail:
+      enabled: true
+
+# Connection Checks
+connections:
+  enabled: true
+  checks:
+    connection_exists:
+      enabled: true
+    hardcoded_credentials:
+      enabled: true
+    test_on_failure:
+      enabled: true
+
+# DAG Configuration Checks
+dags:
+  enabled: true
+  checks:
+    tags:
+      enabled: true
+      require_tags: true
+    documentation:
+      enabled: true
+      require_doc_md: false
+      require_description: false
+    catchup:
+      enabled: true
+      require_catchup_false: true
+    start_date:
+      enabled: true
+      require_timezone_aware: true
+    schedule_interval:
+      enabled: true
+      warn_on_none: false
+    default_args:
+      enabled: true
+      require_owner: true
+      require_retries: true
+      require_retry_delay: true
+    dag_id_naming:
+      enabled: true
+      enforce_pattern: false
+      pattern: "^[a-z][a-z0-9_]*$"  # snake_case
+
+# General Settings
+general:
+  # Exclude specific DAGs from linting
+  exclude_dags:
+    - "example_*"
+    - "test_*"
+  
+  # Exclude specific DAG folders
+  exclude_folders:
+    - "examples"
+    - "__pycache__"
+  
+  # Include Airflow example DAGs
+  include_examples: false
+  
+  # Severity overrides (upgrade/downgrade severity for specific check types)
+  severity_overrides: {}
+    # Example:
+    # missing_tags: "INFO"  # Downgrade from WARNING to INFO
+    # no_retries: "ERROR"   # Upgrade from WARNING to ERROR

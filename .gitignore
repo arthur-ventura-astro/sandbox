@@ -166,3 +166,4 @@ include/.kube
 *.DS_store*
 
 dags/examples/generated_dags/*.py
+.windsurf/**
