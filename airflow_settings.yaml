@@ -20,4 +20,3 @@ airflow:
       conn_extra:
         kube_config_path: /usr/local/airflow/include/.kube
         namespace: general
-

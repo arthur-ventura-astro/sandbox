@@ -1,5 +1,4 @@
 # Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
-astro-sdk-python
 apache-airflow-providers-http
 apache-airflow-providers-common-io
 apache-airflow-providers-amazon[s3fs]
@@ -14,3 +13,5 @@ dbt-core==1.8.7
 dbt-postgres==1.8.2
 pandas
 memory-profiler
+connectorx
+adbc-driver-snowflake
