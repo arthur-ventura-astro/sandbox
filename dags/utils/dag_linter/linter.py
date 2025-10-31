@@ -97,14 +97,20 @@ class DagLinter:
         """
         results = []
         
-        # Task checks
+        # Per-task checks - iterate once over all tasks
         if self.config.is_category_enabled("tasks"):
-            if self.config.is_check_enabled('task_retries'):
-                results.extend(checks.check_task_retries(dag, self.config))
-            if self.config.is_check_enabled('execution_timeout'):
-                results.extend(checks.check_task_timeouts(dag, self.config))
-            if self.config.is_check_enabled('task_concurrency'):
-                results.extend(checks.check_task_concurrency(dag))
+            # Iterate over tasks once and run all per-task checks
+            for task in dag.tasks:
+                if self.config.is_check_enabled('task_retries'):
+                    results.extend(checks.check_task_retries(task, dag, self.config))
+                if self.config.is_check_enabled('execution_timeout'):
+                    results.extend(checks.check_task_timeouts(task, dag, self.config))
+                if self.config.is_check_enabled('task_concurrency'):
+                    results.extend(checks.check_task_concurrency(task, dag))
+                if self.config.is_check_enabled('operator_whitelist_blacklist'):
+                    results.extend(checks.check_operator_whitelist_blacklist(task, dag, self.config))
+            
+            # DAG-level aggregate task checks (not per-task)
             if self.config.is_check_enabled('pool_usage'):
                 results.extend(checks.check_task_pools(dag))
         

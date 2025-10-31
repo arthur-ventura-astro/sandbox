@@ -29,6 +29,21 @@ tasks:
       enabled: false  # Don't check concurrency
     pool_usage:
       enabled: false  # Don't check pools
+    operator_whitelist_blacklist:
+      enabled: true
+      # Operator whitelist - only allow these operators (if enabled)
+      whitelist_enabled: false
+      whitelisted_operators:
+        - "PythonOperator"
+        - "BashOperator"
+        - "EmailOperator"
+        - "airflow.providers.google.cloud.operators"  # Allow all GCP operators
+      # Operator blacklist - block these operators (if enabled)
+      blacklist_enabled: true
+      blacklisted_operators:
+        - "SSHOperator"  # Deprecated/insecure
+        - "SimpleHttpOperator"  # Use HttpOperator instead
+        - "airflow.operators.bash_operator.BashOperator"  # Old import path
 
 # Sensor Configuration Checks
 sensors:

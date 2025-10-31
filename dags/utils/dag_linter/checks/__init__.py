@@ -13,6 +13,7 @@ from .task_checks import (
     check_task_timeouts,
     check_task_concurrency,
     check_task_pools,
+    check_operator_whitelist_blacklist,
 )
 from .sensor_checks import (
     check_sensor_mode,
@@ -46,6 +47,7 @@ __all__ = [
     "check_task_timeouts",
     "check_task_concurrency",
     "check_task_pools",
+    "check_operator_whitelist_blacklist",
     # Sensor checks
     "check_sensor_mode",
     "check_sensor_timeouts",

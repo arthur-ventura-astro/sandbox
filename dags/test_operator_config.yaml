@@ -1,0 +1,32 @@
+# Test configuration for operator validation
+parsing:
+  enabled: false
+
+tasks:
+  enabled: true
+  checks:
+    operator_whitelist_blacklist:
+      enabled: true
+
+sensors:
+  enabled: false
+
+connections:
+  enabled: false
+
+dags:
+  enabled: false
+
+# Operator validation settings
+operators:
+  # Test blacklist - ban BashOperator
+  blacklist_enabled: true
+  blacklisted_operators:
+    - "BashOperator"
+    - "SSHOperator"
+  
+  # Test whitelist (disabled for now)
+  whitelist_enabled: false
+  whitelisted_operators:
+    - "PythonOperator"
+    - "EmailOperator"

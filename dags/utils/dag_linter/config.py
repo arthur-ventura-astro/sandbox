@@ -50,6 +50,12 @@ class LintConfig:
     # Task group best practices
     max_tasks_without_group: int = 10
     
+    # Operator whitelist/blacklist
+    whitelisted_operators: List[str] = field(default_factory=list)
+    blacklisted_operators: List[str] = field(default_factory=list)
+    operator_whitelist_enabled: bool = False
+    operator_blacklist_enabled: bool = True
+    
     # Check enable/disable flags
     enabled_check_categories: Set[str] = field(default_factory=lambda: {"parsing", "tasks", "sensors", "connections", "dags"})
     disabled_checks: Set[str] = field(default_factory=set)
@@ -142,6 +148,24 @@ class LintConfig:
                 disabled_checks.add('task_concurrency')
             if not tasks.get('pool_usage', {}).get('enabled', True):
                 disabled_checks.add('pool_usage')
+            
+            # Operator whitelist/blacklist
+            operator_check = tasks.get('operator_whitelist_blacklist', {})
+            if operator_check.get('enabled', True):
+                config_kwargs['operator_whitelist_enabled'] = operator_check.get('whitelist_enabled', False)
+                config_kwargs['operator_blacklist_enabled'] = operator_check.get('blacklist_enabled', True)
+                config_kwargs['whitelisted_operators'] = operator_check.get('whitelisted_operators', [])
+                config_kwargs['blacklisted_operators'] = operator_check.get('blacklisted_operators', [])
+            else:
+                disabled_checks.add('operator_whitelist_blacklist')
+        
+        # Read operators section (alternative location)
+        if 'operators' in yaml_config:
+            operators = yaml_config['operators']
+            config_kwargs['operator_whitelist_enabled'] = operators.get('whitelist_enabled', False)
+            config_kwargs['operator_blacklist_enabled'] = operators.get('blacklist_enabled', True)
+            config_kwargs['whitelisted_operators'] = operators.get('whitelisted_operators', [])
+            config_kwargs['blacklisted_operators'] = operators.get('blacklisted_operators', [])
         
         # Sensor configuration
         if yaml_config.get('sensors', {}).get('enabled', True):

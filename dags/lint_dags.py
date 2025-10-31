@@ -114,6 +114,13 @@ def parse_args():
         help="Only show issues of this severity or higher"
     )
     
+    # Report type
+    parser.add_argument(
+        "--raw",
+        action="store_true",
+        help="Generate raw (detailed) report instead of summary report"
+    )
+    
     return parser.parse_args()
 
 
@@ -175,34 +182,45 @@ def main():
     # Generate output
     print("Generating report...", file=sys.stderr)
     
-    output_file = None
     if args.output:
-        output_file = open(args.output, 'w')
+        # Generate either raw or summary report (mutually exclusive)
+        output_path = Path(args.output)
+        
+        # Determine report type
+        use_raw = args.raw
+        report_type = "raw" if use_raw else "summary"
+        
+        print(f"Generating {report_type} report...", file=sys.stderr)
+        
+        with open(output_path, 'w') as output_file:
+            if args.format == "json":
+                if use_raw:
+                    JSONReporter.write_report(report, output_file)
+                else:
+                    # JSON summary uses raw format (JSON is already structured)
+                    JSONReporter.write_report(report, output_file)
+            elif args.format == "markdown":
+                if use_raw:
+                    MarkdownReporter.write_report(report, output_file)
+                else:
+                    output_file.write(MarkdownReporter.format_summary_report(report))
+            else:  # console format not supported for file output
+                if use_raw:
+                    output_file.write(ConsoleReporter.format_report(report))
+                else:
+                    output_file.write(ConsoleReporter.format_summary_report(report))
+        
+        print(f"Report written to: {output_path}", file=sys.stderr)
     
-    try:
+    else:
+        # Console output - always print summary
         if args.format == "json":
-            if output_file:
-                JSONReporter.write_report(report, output_file)
-            else:
-                import json
-                print(json.dumps(JSONReporter.format_report(report), indent=2))
-        
+            import json
+            print(json.dumps(JSONReporter.format_report(report), indent=2))
         elif args.format == "markdown":
-            if output_file:
-                MarkdownReporter.write_report(report, output_file)
-            else:
-                print(MarkdownReporter.format_report(report))
-        
+            print(MarkdownReporter.format_summary_report(report))
         else:  # console
-            if output_file:
-                output_file.write(ConsoleReporter.format_report(report))
-            else:
-                ConsoleReporter.print_report(report)
-    
-    finally:
-        if output_file:
-            output_file.close()
-            print(f"\nReport written to: {args.output}", file=sys.stderr)
+            print(ConsoleReporter.format_summary_report(report))
     
     # Exit with error code if critical issues found
     if report.errors > 0:
