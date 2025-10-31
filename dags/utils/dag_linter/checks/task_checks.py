@@ -4,8 +4,8 @@ Task configuration checks for best practices.
 
 from typing import List
 
-from airflow.models import DAG, BaseOperator
-from airflow.sensors.base import BaseSensorOperator
+from ..compat import DAG, BaseOperator, BaseSensorOperator
+from ..compat import get_task_retries, get_task_execution_timeout, get_task_concurrency
 from ..models import LintResult, LintSeverity, LintCategory
 from ..config import LintConfig
 
@@ -24,8 +24,8 @@ def check_task_retries(task: BaseOperator, dag: DAG, config: LintConfig) -> List
     """
     results = []
     
-    # Check if retries are configured
-    retries = task.retries if task.retries is not None else 0
+    # Check if retries are configured (version-agnostic)
+    retries = get_task_retries(task)
     
     if retries < config.min_retries:
         results.append(LintResult(
@@ -79,7 +79,8 @@ def check_task_timeouts(task: BaseOperator, dag: DAG, config: LintConfig) -> Lis
     """
     results = []
     
-    execution_timeout = task.execution_timeout
+    # Get execution timeout (version-agnostic)
+    execution_timeout = get_task_execution_timeout(task)
     
     if config.require_execution_timeout and execution_timeout is None:
         # Skip sensor operators as they have their own timeout mechanism
@@ -135,18 +136,18 @@ def check_task_concurrency(task: BaseOperator, dag: DAG) -> List[LintResult]:
     """
     results = []
     
-    if hasattr(task, 'max_active_tis_per_dag'):
-        max_active = task.max_active_tis_per_dag
-        if max_active and max_active == 1:
-            results.append(LintResult(
-                dag_id=dag.dag_id,
-                task_id=task.task_id,
-                category=LintCategory.TASK_CONFIG,
-                severity=LintSeverity.INFO,
-                message="Task has max_active_tis_per_dag=1 which may cause bottlenecks",
-                metric_value=max_active,
-                recommendation="Verify if this restriction is necessary for your use case"
-            ))
+    # Get task concurrency (version-agnostic)
+    max_active = get_task_concurrency(task)
+    if max_active and max_active == 1:
+        results.append(LintResult(
+            dag_id=dag.dag_id,
+            task_id=task.task_id,
+            category=LintCategory.TASK_CONFIG,
+            severity=LintSeverity.INFO,
+            message="Task has concurrency limit of 1 which may cause bottlenecks",
+            metric_value=max_active,
+            recommendation="Verify if this restriction is necessary for your use case"
+        ))
     
     return results
 

@@ -4,7 +4,7 @@ DAG-level configuration checks.
 
 from typing import List
 
-from airflow.models import DAG
+from ..compat import DAG, get_dag_schedule, get_dag_concurrency, get_dag_max_active_runs
 from ..models import LintResult, LintSeverity, LintCategory
 from ..config import LintConfig
 
@@ -147,7 +147,8 @@ def check_schedule_interval(dag: DAG) -> List[LintResult]:
     """
     results = []
     
-    schedule = dag.schedule_interval
+    # Get schedule (version-agnostic)
+    schedule = get_dag_schedule(dag)
     
     if schedule is None and not hasattr(dag, 'dataset_triggers'):
         results.append(LintResult(

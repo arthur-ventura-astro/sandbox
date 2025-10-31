@@ -4,8 +4,7 @@ Sensor-specific configuration checks.
 
 from typing import List
 
-from airflow.models import DAG
-from airflow.sensors.base import BaseSensorOperator
+from ..compat import DAG, BaseSensorOperator, safe_getattr
 from ..models import LintResult, LintSeverity, LintCategory
 from ..config import LintConfig
 

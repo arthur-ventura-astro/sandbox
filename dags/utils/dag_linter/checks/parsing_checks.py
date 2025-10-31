@@ -8,7 +8,7 @@ import tracemalloc
 import importlib.util
 from typing import List, Dict, Optional
 
-from airflow.models import DagBag
+from ..compat import DagBag
 from ..models import LintResult, LintSeverity, LintCategory
 from ..config import LintConfig
 

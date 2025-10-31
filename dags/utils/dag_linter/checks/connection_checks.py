@@ -5,8 +5,7 @@ Connection reference validation checks.
 import re
 from typing import List, Set
 
-from airflow.models import DAG, Connection
-from airflow.hooks.base import BaseHook
+from ..compat import DAG, Connection, BaseHook, get_connection_exists
 from ..models import LintResult, LintSeverity, LintCategory
 from ..config import LintConfig
 
@@ -70,10 +69,8 @@ def check_connection_existence(dag: DAG, config: LintConfig) -> List[LintResult]
         conn_ids = extract_connection_ids(task)
         
         for conn_id in conn_ids:
-            try:
-                # Try to get connection from Airflow
-                Connection.get_connection_from_secrets(conn_id)
-            except Exception:
+            # Check connection existence (version-agnostic)
+            if not get_connection_exists(conn_id):
                 results.append(LintResult(
                     dag_id=dag.dag_id,
                     task_id=task.task_id,

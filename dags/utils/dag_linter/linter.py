@@ -5,7 +5,7 @@ Main DAG Linter class that orchestrates all checks.
 import logging
 from typing import Optional, List
 
-from airflow.models import DagBag
+from .compat import DagBag
 from .models import LintReport, LintResult
 from .config import LintConfig, get_config
 from . import checks
